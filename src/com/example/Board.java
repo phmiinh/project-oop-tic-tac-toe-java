@@ -18,8 +18,6 @@ public class Board extends JPanel {
     public static final int ST_WIN = 1;
     public static final int ST_NORMAL = 2;
 
-    //0: Hòa (hết nước không ai thắng cả), 1: Player hiện tại thắng, 2: Player hiện tại chưa thắng (còn nước đánh tiếp)
-
     private EndGameListener endGameListener;
     private Image imgX;
     private Image imgO;
@@ -45,10 +43,8 @@ public class Board extends JPanel {
                     return;
                 }
 
-                //phát ra âm thanh
                 soundClick();
-
-                //Tính toán xem x, y rơi vào ô nào trong board, sau đó vẽ hình x, o tùy ý
+                
                 for(int i = 0 ; i < N; i++){
                     for(int j = 0 ; j < M; j++){
                         Cell cell = matrix[i][j];
@@ -131,7 +127,6 @@ public class Board extends JPanel {
         repaint();
     }
 
-    //0: Hòa (hết nước không ai thắng cả), 1: Player hiện tại thắng, 2: Player hiện tại chưa thắng (còn nước đánh tiếp)
     public int checkWin(String player){
         //Đường chéo thứ nhất
         if(this.matrix[0][0].getValue().equals(player) && this.matrix[1][1].getValue().equals(player) && this.matrix[2][2].getValue().equals(player)){
@@ -143,32 +138,32 @@ public class Board extends JPanel {
             return ST_WIN;
         }
 
-        //Dòng thứ 1
+        //Dòng 1
         if(this.matrix[0][0].getValue().equals(player) && this.matrix[0][1].getValue().equals(player) && this.matrix[0][2].getValue().equals(player)){
             return ST_WIN;
         }
 
-        //Dòng thứ 2
+        //Dòng 2
         if(this.matrix[1][0].getValue().equals(player) && this.matrix[1][1].getValue().equals(player) && this.matrix[1][2].getValue().equals(player)){
             return ST_WIN;
         }
 
-        //Dòng thứ 3
+        //Dòng 3
         if(this.matrix[2][0].getValue().equals(player) && this.matrix[2][1].getValue().equals(player) && this.matrix[2][2].getValue().equals(player)){
             return ST_WIN;
         }
 
-        //Cột thứ 1
+        //Cột 1
         if(this.matrix[0][0].getValue().equals(player) && this.matrix[1][0].getValue().equals(player) && this.matrix[2][0].getValue().equals(player)){
             return ST_WIN;
         }
 
-        //Cột thứ 2
+        //Cột 2
         if(this.matrix[0][1].getValue().equals(player) && this.matrix[1][1].getValue().equals(player) && this.matrix[2][1].getValue().equals(player)){
             return ST_WIN;
         }
 
-        //Cột thứ 2
+        //Cột 3
         if(this.matrix[0][2].getValue().equals(player) && this.matrix[1][2].getValue().equals(player) && this.matrix[2][2].getValue().equals(player)){
             return 1;
         }
@@ -212,7 +207,6 @@ public class Board extends JPanel {
                 int x = j * w;
                 int y = i * h;
 
-                //Cập nhật lại ma trận
                 Cell cell = matrix[i][j];
                 cell.setX(x);
                 cell.setY(y);
