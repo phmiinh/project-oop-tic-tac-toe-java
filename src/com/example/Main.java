@@ -80,13 +80,12 @@ public class Main {
     }
 
     private static void startGame(){
-        //Hỏi ai đi trước
+        
         int choice = JOptionPane.showConfirmDialog(null, "Mr.O will go first?", "Who is going to start?", JOptionPane.YES_NO_OPTION);
         board.reset();
         String currentPlayer = (choice == 0) ? Cell.O_VALUE : Cell.X_VALUE;
         board.setCurrentPlayer(currentPlayer);
 
-        //Đếm ngược
         sec = 0;
         lblTime.setText("0:0");
         timer.cancel();
